@@ -5,9 +5,13 @@ import Exceptions.InvalidFeeException;
 import at.hakimst.sample.WalletApp;
 import domain.CryptoCurrency;
 import domain.Wallet;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+
 
 import java.math.BigDecimal;
 import java.util.Optional;
@@ -50,6 +54,11 @@ public class MainController extends BaseControllerState {
         tableView.getColumns().add(amount);
 
         tableView.getItems().setAll(getWalletList().getWalletAsObservableList());
+
+        this.btnClose.setOnAction((ActionEvent event)->
+        {
+            Platform.exit();
+        });
 
     }
 

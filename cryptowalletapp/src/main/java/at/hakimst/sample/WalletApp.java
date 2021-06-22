@@ -99,6 +99,8 @@ public class WalletApp extends Application {
         GlobalContext.getGlobalContext().putStateFor(WalletApp.GLOBAL_BANK_ACCOUNT, bankAccount);
         GlobalContext.getGlobalContext().putStateFor(WalletApp.GLOBAL_CURRENT_CURRENCY_PRICES, new CurrentCurrencyPrices());
 
+        mainStage.setOnCloseRequest(event -> event.consume());
+
         WalletApp.switchScene("main.fxml", "at.hakimst.sample.main");
     }
 
