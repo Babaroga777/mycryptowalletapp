@@ -93,7 +93,14 @@ public class MainController extends BaseControllerState {
     }
 
     public void openWallet() {
-        WalletApp.switchScene("wallet.fxml", "at.hakimst.sample.wallet");
+        Wallet wallet = this.tableView.getSelectionModel().getSelectedItem();
+        if (wallet != null) {
+            GlobalContext.getGlobalContext().putStateFor(WalletApp.GLOBAL_SELECTED_WALLET, wallet);
+            WalletApp.switchScene("wallet.fxml", "at.hakimst.sample.wallet");
+        } else {
+            WalletApp.showErrorDialog("You have to select a wallet first!");
+        }
+
     }
 
     public void newWallet() throws InvalidFeeException {
